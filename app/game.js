@@ -1,4 +1,6 @@
 import $ from 'jquery';
+import Background from './background.js';
+import Ball from './ball.js';
 
 export default class Game{
   keys:{
@@ -9,7 +11,6 @@ export default class Game{
     40: 'down'
   }
   constructor(canvas){
-    console.log(canvas);
     this.context = canvas.getContext("2d");
     this.width = canvas.width;
     this.height = canvas.height;
@@ -28,6 +29,9 @@ export default class Game{
   }
   start(){
     console.log('Game starting ...');
-    
+    let entities = [new Background(this.context, this.height, this.width)];
+    entities.forEach(function(entity){
+      entity.draw();
+    });
   }
 }
